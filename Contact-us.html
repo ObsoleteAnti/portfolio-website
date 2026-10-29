@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="Style.css">
+    <script src="Main.js" defer></script>
+    <script src="Contact.js" defer></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">MyBrand</div>
+
+        <!--Hamburger Button-->
+        <button type="button" class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Projects.html">Projects</a></li>
+            <li><a href="About-us.html">About Me</a></li>
+            <li><a href="Contact-us.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <main class="contact-page">
+        <section class="contact-form-side">
+            <h1>Get In Touch</h1>
+            <form id="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="service">Service / Project Type</label>
+                <select id="service" name="service" required>
+                    <option value="" disabled selected>Select one</option>
+                    <option value="web">Web</option>
+                    <option value="consult">Consult</option>
+                    <option value="general">General</option>
+                </select>
+
+                <label for="budget">Estimated Budget (optional)</label>
+                <input type="text" id="budget" name="budget" inputmode="decimal" placeholder="e.g. $500">
+
+                <button type="submit">Submit</button>
+                <p id="form-status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+        <aside class="contact-side">
+            <img src="PersonIcon.webp" alt="Portrait of Kyle Leitch" class="contact-photo">
+            <div class="direct-contact">
+                <h2>Direct Contact</h2>
+                <ul>
+                    <li>Email: <a href="mailto:example@gmail.com">example@gmail.com</a></li>
+                    <li>Location: Random</li>
+                    <li>Timezone: NZST (UTC +12)</li>
+                </ul>
+                <p><strong>Response time:</strong> within 24-72 hours</p>
+                <h3>Connect &amp; Socials</h3>
+                <p><a href="#">Github</a> &middot; <a href="#">LinkedIn</a> &middot; <a href="#">Twitter</a> &middot; <a href="#">Bluesky</a></p>
+                <h3>Alternative Contact</h3>
+                <p>Prefer direct booking? Call [Phone Number]</p>
+            </div>
+        </aside>
+    </main>
+    <footer class="site-footer">
+        <p>&copy; 2026 MyBrand &middot; <a href="Privacy-Policy.html">Privacy Policy</a></p>
+    </footer>
+</body>
+
+</html>

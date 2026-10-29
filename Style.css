@@ -1,0 +1,429 @@
+/* ==========================================================================
+   Style.css
+   Sections:
+     1. Variables
+     2. Base
+     3. Navbar
+     4. Home page
+     5. Services page (flip cards)
+     6. About & Contact pages
+     7. Contact form
+     8. Projects page (slideshow)
+     9. Policy page / shared page wrappers
+    10. Footer
+    11. Responsive (max-width: 768px)
+   ========================================================================== */
+
+
+/* ---------- 1. Variables ---------- */
+
+:root {
+    /* Colours */
+    --color-bg: #101114;
+    --color-surface: #25272b;
+    --color-surface-raised: #303238;
+    --color-border: #4a4d54;
+    --color-text: #f5f5f5;
+    --color-accent: #79d6c3;
+    --color-accent-dark: #18534a;
+
+    /* Corner radius */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+}
+
+
+/* ---------- 2. Base ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+
+/* ---------- 3. Navbar ---------- */
+
+.navbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: var(--color-surface);
+}
+
+.logo {
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-links a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    color: var(--color-accent);
+}
+
+/* Hamburger button (hidden on desktop, shown in the responsive section) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background: var(--color-text);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+
+/* ---------- 4. Home page ---------- */
+
+.Home-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+}
+
+.text-side {
+    flex: 1;
+}
+
+.image-side {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: flex-end;
+}
+
+.image-side img {
+    display: block;
+    width: 270px;
+    height: 270px;
+    border: 3px solid var(--color-accent);
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* ---------- 5. Services page (flip cards) ---------- */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.grid-item {
+    min-height: 320px;
+    perspective: 1000px;
+    cursor: pointer;
+    outline: none;
+}
+
+.grid-item:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+}
+
+/* The "flipped" class is toggled by JavaScript */
+.grid-item.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-raised);
+    text-align: center;
+    backface-visibility: hidden;
+}
+
+.card-face h2 {
+    margin-top: 0;
+    text-transform: capitalize;
+}
+
+.card-back {
+    background: var(--color-accent-dark);
+    transform: rotateY(180deg);
+}
+
+.grid-image {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    height: 150px;
+    margin-top: 1rem;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+}
+
+
+/* ---------- 6. About & Contact pages ---------- */
+
+/* Shared wrapper used by every content page (see also section 9) */
+.about-page,
+.contact-page,
+.projects-page,
+.policy-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/* Two-column layout: text on the left, photo/info on the right */
+.about-page,
+.contact-page {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.about-text,
+.contact-form-side {
+    flex: 1;
+}
+
+.about-side,
+.contact-side {
+    flex: 0 0 280px;
+    text-align: center;
+}
+
+.about-photo,
+.contact-photo {
+    width: 220px;
+    height: 220px;
+    border: 3px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    object-fit: cover;
+}
+
+.about-name {
+    font-size: 1.4rem;
+    text-decoration: underline;
+}
+
+
+/* ---------- 7. Contact form ---------- */
+
+.contact-form-side form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-form-side input,
+.contact-form-side select {
+    padding: 0.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-raised);
+    color: inherit;
+}
+
+.contact-form-side button {
+    margin-top: 1rem;
+    padding: 0.7rem;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: var(--color-accent-dark);
+    color: #fff;
+    cursor: pointer;
+}
+
+.direct-contact {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-raised);
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+/* Accent-coloured links in the contact box and footer */
+.direct-contact a,
+.site-footer a {
+    color: var(--color-accent);
+}
+
+
+/* ---------- 8. Projects page (slideshow) ---------- */
+
+.project {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.slideshow {
+    position: relative;
+    flex: 0 0 50%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+/* The "active" class is toggled by JavaScript */
+.slide.active {
+    opacity: 1;
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.project-info {
+    flex: 1;
+}
+
+
+/* ---------- 9. Policy page ---------- */
+
+/* .policy-page gets its width/padding from the shared wrapper in section 6.
+   Add policy-specific styles here if needed. */
+
+
+/* ---------- 10. Footer ---------- */
+
+.site-footer {
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+
+/* ---------- 11. Responsive (max-width: 768px) ---------- */
+
+/* Keep this block last so it overrides the desktop rules above */
+@media (max-width: 768px) {
+
+    /* Home page: stack text above the photo */
+    .Home-page {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 3rem 1.5rem;
+    }
+
+    .image-side {
+        align-self: flex-end;
+    }
+
+    /* About, Contact and Projects: single column */
+    .about-page,
+    .contact-page,
+    .project {
+        flex-direction: column;
+    }
+
+    .about-side,
+    .contact-side,
+    .slideshow {
+        flex: none;
+        width: 100%;
+    }
+
+    /* Mobile navigation: hamburger toggles a dropdown menu */
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        z-index: 2;
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 2rem;
+        background: var(--color-surface);
+        text-align: center;
+    }
+
+    /* The "active" class is toggled by JavaScript */
+    .nav-links.active {
+        display: flex;
+    }
+
+    /* Hamburger -> "X" animation */
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
